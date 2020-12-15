@@ -7,7 +7,7 @@ console.log("ok!")
 const DemoContext = React.createContext(null)
 
 function Demo() {
-	const dispatch = useContext(DemoContext)
+	const {state,dispatch} = useContext(DemoContext)
 
 	function demoCmd() {
 		dispatch({
@@ -21,7 +21,7 @@ function Demo() {
 	
 	return(
 		<div>
-			<p>ciao </p>
+			<p>ciao {state}</p>
 			<button onClick={()=>{
 			demoCmd()
 			
@@ -46,7 +46,7 @@ function  App() {
 	
 	
 	return (
-		<DemoContext.Provider value={dispatch}>
+		<DemoContext.Provider value={{state,dispatch}}>
 		<div className="app">
 			<h1>titolo</h1>
 			<Demo/>
